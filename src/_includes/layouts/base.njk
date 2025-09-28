@@ -34,6 +34,17 @@
     </div>
   </header>
 
+  <!-- Christmas Banner -->
+  <header class="christmas-banner">
+    <!-- Snowflakes will be dynamically added here by JavaScript -->
+    
+    <span class="banner-decoration left" role="img" aria-label="Christmas Tree">🎄</span>
+    
+    <h1 class="banner-title">Catálogo Navideño 2025</h1>
+    
+    <span class="banner-decoration right" role="img" aria-label="Santa Claus Hat">🎅</span>
+  </header>
+
   <main>
     {{ content | safe }}
   </main>
@@ -116,6 +127,30 @@
           // (no hacer preventDefault, permitir la navegación a /index.html#ofertas)
         });
       });
+    });
+
+    // Christmas Banner Snowflake Animation
+    document.addEventListener('DOMContentLoaded', function () {
+      const banner = document.querySelector('.christmas-banner');
+      if (banner) {
+        // More snowflakes for a denser effect on wider screens
+        const numberOfSnowflakes = window.innerWidth > 768 ? 50 : 25; 
+
+        for (let i = 0; i < numberOfSnowflakes; i++) {
+          let snowflake = document.createElement('div');
+          snowflake.className = 'snowflake';
+          
+          // Randomize size, position, and animation timing for a natural look
+          const size = Math.random() * 4 + 2 + 'px';
+          snowflake.style.width = size;
+          snowflake.style.height = size;
+          snowflake.style.left = Math.random() * 100 + 'vw';
+          snowflake.style.animationDuration = (Math.random() * 5 + 5) + 's'; // 5-10 seconds
+          snowflake.style.animationDelay = Math.random() * 5 + 's';
+
+          banner.appendChild(snowflake);
+        }
+      }
     });
   </script>
 </body>
