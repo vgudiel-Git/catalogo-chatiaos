@@ -92,14 +92,12 @@ header h1 a {
   color: var(--color-accent-purple);
   text-decoration: none;
   transition: all 0.3s ease;
-  text-shadow: 0 0 10px var(--color-accent-purple);
   font-weight: 900;
   display: inline-block;
 }
 
 header h1 a:hover {
   color: var(--color-secondary);
-  text-shadow: 0 0 15px var(--color-secondary);
 }
 
 .logo-image {
@@ -1309,7 +1307,6 @@ footer {
   text-decoration: none;
   font-weight: 600;
   line-height: 32px;
-  text-shadow: 0 0 10px var(--color-accent-purple);
 }
 
 .product-detail__price {
