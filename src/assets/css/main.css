@@ -539,7 +539,6 @@ main {
   color: var(--color-accent-purple);
   border-bottom: 2px solid var(--color-accent-purple);
   padding-bottom: 0.5rem;
-  text-shadow: 0 0 10px var(--color-accent-purple);
 }
 
 .product-category {
