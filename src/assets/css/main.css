@@ -358,12 +358,12 @@ main {
   }
   
   .banner-title {
-    font-size: 2.8rem;
+    font-size: 2.25rem;
     margin: 0 1rem;
   }
   
   .banner-decoration {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 }
 
@@ -373,12 +373,12 @@ main {
   }
   
   .banner-title {
-    font-size: 2rem;
+    font-size: 2.25rem;
     margin: 0 0.5rem;
   }
   
   .banner-decoration {
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
 }
 
