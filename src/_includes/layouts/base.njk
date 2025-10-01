@@ -145,7 +145,22 @@
       
       const ctx = canvas.getContext('2d');
       let snowflakes = [];
-      const numFlakes = 50;
+      
+      // Responsive snowflake density based on screen size
+      function getSnowflakeCount() {
+        const width = window.innerWidth;
+        if (width <= 480) {
+          return 15; // Mobile: fewer snowflakes
+        } else if (width <= 768) {
+          return 25; // Tablet: medium density
+        } else if (width <= 1024) {
+          return 35; // Small desktop: more snowflakes
+        } else {
+          return 50; // Large desktop: full density
+        }
+      }
+      
+      let numFlakes = getSnowflakeCount();
 
       function setupCanvas() {
         const dpr = window.devicePixelRatio || 1;
@@ -157,11 +172,27 @@
 
       function createSnowflakes() {
         snowflakes = [];
-        for (let i = 0; i < numFlakes; i++) {
+        const currentNumFlakes = getSnowflakeCount();
+        const width = window.innerWidth;
+        
+        // Adjust snowflake size based on screen size
+        let maxRadius, minRadius;
+        if (width <= 480) {
+          minRadius = 0.5;
+          maxRadius = 1.5; // Smaller snowflakes on mobile
+        } else if (width <= 768) {
+          minRadius = 0.8;
+          maxRadius = 2; // Medium snowflakes on tablet
+        } else {
+          minRadius = 1;
+          maxRadius = 3; // Larger snowflakes on desktop
+        }
+        
+        for (let i = 0; i < currentNumFlakes; i++) {
           snowflakes.push({
             x: Math.random() * canvas.offsetWidth,
             y: Math.random() * canvas.offsetHeight,
-            radius: Math.random() * 2 + 1,
+            radius: Math.random() * (maxRadius - minRadius) + minRadius,
             density: Math.random() * 0.5 + 0.2 /* Slower snow */
           });
         }
@@ -200,7 +231,7 @@
       
       function handleResize() {
         setupCanvas();
-        // Re-creating flakes on resize looks better than just stretching
+        // Always recreate snowflakes on resize to match new screen size
         createSnowflakes();
       }
 
