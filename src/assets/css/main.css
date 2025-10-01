@@ -284,101 +284,107 @@ main {
 }
 
 /* --- Christmas Banner --- */
-.christmas-banner {
-  background: linear-gradient(135deg, #c8102e, #a40822);
-  color: white;
-  padding: 2rem 1rem;
+.banner-wrapper {
   width: 100%;
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
+}
+
+.banner-content {
+  position: relative; /* Needed for the canvas overlay */
+  background-image: linear-gradient(45deg, #8a0303, #0f4d1c);
+  color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  padding: 2rem;
+}
+
+#snow-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none; /* Allows clicks to go through the canvas */
+}
+
+.banner-container {
+  position: relative; /* To appear above the canvas */
+  z-index: 2;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  position: relative;
-  overflow: hidden;
-  border-bottom: 4px solid #f1c40f;
-  box-sizing: border-box;
-  margin-top: 0;
-  z-index: 50;
+  gap: 1.5rem;
 }
 
-.banner-title {
-  font-family: 'Merienda', cursive;
-  font-size: 3.5rem;
-  margin: 0 1.5rem;
-  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
-  animation: fadeInText 1.5s ease-out forwards;
-  z-index: 10;
+/* Offer Text Section */
+.offer-text h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
   font-weight: 700;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  margin: 0;
 }
 
-.banner-decoration {
-  font-size: 3rem;
+.offer-text p {
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: #e5e7eb;
+  margin-top: 0.5rem;
+}
+
+.offer-text .highlight {
+  font-weight: 700;
+  color: #fde047; /* A warm gold color */
+}
+
+/* CTA Button */
+.cta-button {
   display: inline-block;
-  animation: sway 4s ease-in-out infinite;
-  transform-origin: top center;
-  z-index: 10;
+  background-color: #fde047;
+  color: #4b2525;
+  font-weight: 700;
+  padding: 0.75rem 2.5rem;
+  border-radius: 50px; /* Pill shape */
+  transition: all 0.3s ease;
+  font-size: 1.125rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  animation: pulse-button 2s infinite;
 }
 
-.banner-decoration.left {
-  animation-delay: -2s;
-}
-
-.snowflake {
-  position: absolute;
-  background: white;
-  border-radius: 50%;
-  opacity: 0;
-  animation: fall linear infinite;
-  z-index: 1;
-}
-
-/* Christmas Banner Animations */
-@keyframes fadeInText {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes sway {
-  0%, 100% { transform: rotate(5deg); }
-  50% { transform: rotate(-5deg); }
-}
-
-@keyframes fall {
-  0% { transform: translateY(-10vh); opacity: 0; }
-  10% { opacity: 0.8; }
-  90% { opacity: 0.8; }
-  100% { transform: translateY(15vh); opacity: 0; }
-}
-
-/* Responsive Christmas Banner */
-@media (max-width: 768px) {
-  .christmas-banner {
-    padding: 1.5rem 1rem;
+@keyframes pulse-button {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
   }
-  
-  .banner-title {
-    font-size: 2.25rem;
-    margin: 0 1rem;
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 15px 25px -5px rgba(253, 224, 71, 0.4), 0 8px 10px -6px rgba(253, 224, 71, 0.4);
   }
-  
-  .banner-decoration {
-    font-size: 2rem;
+  100% {
+    transform: scale(1);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
   }
 }
 
-@media (max-width: 480px) {
-  .christmas-banner {
-    padding: 1rem 0.5rem;
+/* Responsive Styles */
+@media (min-width: 768px) {
+  .banner-content {
+    padding: 3rem;
   }
-  
-  .banner-title {
-    font-size: 2.25rem;
-    margin: 0 0.5rem;
+  .offer-text h2 {
+    font-size: 3.5rem;
   }
-  
-  .banner-decoration {
-    font-size: 1.75rem;
+  .offer-text p {
+    font-size: 1.25rem;
   }
 }
 
